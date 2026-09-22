@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-import manFigure from "@/assets/hero/salim-user.png";
-import womanFigure from "@/assets/hero/amal-user.png";
+import manFigure from "@/assets/hero/sahl-man-bust.png";
+import womanFigure from "@/assets/hero/sahl-woman-bust.png";
 
 /**
  * مقدمة سينمائية لصفحة الأسعار — تظهر فقط على الكمبيوتر والشاشات الكبيرة.
