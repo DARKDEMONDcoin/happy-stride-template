@@ -194,7 +194,9 @@ function PricingPage() {
       </section>
 
       <div className="hidden md:block">
+        <PricingBeyondHero />
         <PageHero
+
           eyebrow="أسعار واضحة"
           title="منصة سهل. إمكانيات موظفين ذكاء اصطناعي لا حصر لها."
           lead="بدون رسوم إعداد، بدون عقد سنوي إجباري، وبدون مفاجآت في الفاتورة. الأسعار شهرية وتُعرض تقريبياً بعملة بلدك."
