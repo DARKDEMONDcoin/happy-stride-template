@@ -46203,35 +46203,39 @@ html {
     transition: transform 0.05s linear;
   }
 
-  .sahl-beyond-figures {
+  .sahl-beyond-people {
     position: absolute;
-    inset: 0;
+    inset: auto 0 0;
     z-index: 10;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: clamp(0.5rem, 2vw, 2.5rem);
-    padding-inline: clamp(3rem, 8vw, 9rem);
+    width: 100%;
+    height: clamp(18rem, 43vh, 31rem);
+    overflow: hidden;
     pointer-events: none;
+    direction: ltr;
   }
 
-  .sahl-beyond-figure {
+  .sahl-beyond-people-track {
+    display: flex;
+    width: max-content;
+    height: 100%;
+    will-change: transform;
+    animation: sahl-people-scroll 54s linear infinite;
+  }
+
+  .sahl-beyond-people-set {
+    display: flex;
+    flex: none;
+    height: 100%;
+  }
+
+  .sahl-beyond-people-set img {
     display: block;
-    width: min(38vw, 550px);
-    max-width: calc(50% - 1.25rem);
-    height: auto;
-    max-height: 76%;
+    flex: none;
+    width: auto;
+    height: 100%;
     object-fit: contain;
     object-position: center bottom;
-    filter: drop-shadow(0 26px 44px oklch(0.16 0.004 60 / 0.24));
-  }
-
-  .sahl-beyond-figure-man {
-    transform: translateY(2%);
-  }
-
-  .sahl-beyond-figure-woman {
-    transform: translateY(2%);
+    filter: drop-shadow(0 24px 38px oklch(0.16 0.004 60 / 0.2));
   }
 
   .sahl-beyond-marquee {
@@ -46280,25 +46284,8 @@ html {
     text-shadow: 0 2px 14px oklch(0.16 0.004 60 / 0.18);
   }
 
-  .sahl-beyond-figures {
-    gap: 1rem;
-    padding-inline: 6vw;
-  }
-
-  .sahl-beyond-figure {
-    width: 41vw;
-    max-width: calc(50% - 0.5rem);
-    height: auto;
-    max-height: 70%;
-    object-fit: contain;
-  }
-
-  .sahl-beyond-figure-man {
-    transform: translateY(1%);
-  }
-
-  .sahl-beyond-figure-woman {
-    transform: translateY(1%);
+  .sahl-beyond-people {
+    height: clamp(15rem, 39vh, 24rem);
   }
 
   .sahl-beyond-marquee {
@@ -46315,8 +46302,18 @@ html {
   }
 }
 
+@keyframes sahl-people-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .sahl-beyond-marquee-track {
+  .sahl-beyond-marquee-track,
+  .sahl-beyond-people-track {
     animation: none;
   }
 }
