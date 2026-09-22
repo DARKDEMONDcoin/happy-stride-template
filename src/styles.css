@@ -46139,7 +46139,7 @@ html {
   .sahl-beyond-sticky {
     position: sticky;
     top: 0;
-    z-index: 5;
+    z-index: 11;
     height: 100vh;
     width: 100%;
   }
@@ -46196,7 +46196,8 @@ html {
     font-weight: 700;
     font-size: clamp(1.8rem, 5vw, 6rem);
     line-height: 1.1;
-    color: oklch(1 0 0 / 0.85);
+    color: oklch(1 0 0 / 0.9);
+    text-shadow: 0 3px 18px oklch(0.16 0.004 60 / 0.32);
     user-select: none;
     transition: transform 0.05s linear;
   }
