@@ -46114,12 +46114,12 @@ html {
   }
 }
 
-/* ===== مقدمة صفحة الأسعار السينمائية (كمبيوتر وشاشات كبيرة فقط) ===== */
+/* ===== مقدمة صفحة الأسعار السينمائية (وضع الكمبيوتر فقط — تظهر على الهاتف عند تفعيل "وضع سطح المكتب") ===== */
 .sahl-beyond {
   display: none;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .sahl-beyond {
     display: block;
     --sahl-hero-bg: var(--gold-deep);
