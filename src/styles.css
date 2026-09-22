@@ -46253,6 +46253,36 @@ html {
   }
 }
 
+/* شاشات متوسطة (تابلت / هاتف في وضع سطح المكتب) — مقاسات مضبوطة حتى لا يحدث قصّ */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .sahl-beyond-title {
+    font-size: clamp(6rem, 15vw, 11rem);
+  }
+
+  .sahl-beyond-words {
+    padding: 0 4vw;
+    bottom: -4vh;
+  }
+
+  .sahl-beyond-word {
+    font-size: clamp(1.4rem, 4.2vw, 3rem);
+  }
+
+  .sahl-beyond-figures {
+    gap: 0.5rem;
+  }
+
+  .sahl-beyond-figure {
+    height: 62%;
+    max-width: 42vw;
+    object-fit: contain;
+  }
+
+  .sahl-beyond-marquee {
+    padding: 1.25rem 0;
+  }
+}
+
 @keyframes sahl-beyond-scroll {
   0% {
     transform: translateX(0);

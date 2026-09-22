@@ -16,7 +16,7 @@ import {
   Zap,
 } from "lucide-react";
 
-import { PageShell, PageHero, CtaBand } from "@/components/site/PageShell";
+import { PageShell, CtaBand } from "@/components/site/PageShell";
 import { PricingBeyondHero } from "@/components/site/PricingBeyondHero";
 
 import { Reveal } from "@/components/Reveal";
@@ -197,12 +197,7 @@ function PricingPage() {
 
       <div className="hidden md:block">
         <PricingBeyondHero />
-        <PageHero
 
-          eyebrow="أسعار واضحة"
-          title="منصة سهل. إمكانيات موظفين ذكاء اصطناعي لا حصر لها."
-          lead="بدون رسوم إعداد، بدون عقد سنوي إجباري، وبدون مفاجآت في الفاتورة. الأسعار شهرية وتُعرض تقريبياً بعملة بلدك."
-        />
 
         <section className="mx-auto max-w-6xl px-5 py-14">
           <div className="mb-8 flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground">
