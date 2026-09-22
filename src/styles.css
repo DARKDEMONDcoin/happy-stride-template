@@ -46113,3 +46113,157 @@ html {
     transition: none;
   }
 }
+
+/* ===== مقدمة صفحة الأسعار السينمائية (كمبيوتر وشاشات كبيرة فقط) ===== */
+.sahl-beyond {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .sahl-beyond {
+    display: block;
+    --sahl-hero-bg: var(--gold-deep);
+    --sahl-hero-front: oklch(1 0 0);
+    --sahl-hero-gold: var(--gold);
+    --sahl-hero-teal: var(--jade);
+  }
+
+  .sahl-beyond-stage {
+    position: relative;
+    width: 100%;
+    height: 120vh;
+    overflow: hidden;
+    background: var(--sahl-hero-bg);
+  }
+
+  .sahl-beyond-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .sahl-beyond-title-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 3vh;
+  }
+
+  .sahl-beyond-title-stack {
+    position: relative;
+  }
+
+  .sahl-beyond-title {
+    display: block;
+    inset: 0;
+    font-family: "Almarai", var(--font-display);
+    font-weight: 800;
+    font-size: clamp(7rem, 20vw, 20rem);
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .sahl-beyond-words {
+    position: absolute;
+    inset: 0;
+    bottom: -8vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 6vw;
+    pointer-events: none;
+  }
+
+  .sahl-beyond-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sahl-beyond-col-end {
+    align-items: flex-end;
+  }
+
+  .sahl-beyond-word {
+    font-family: "Almarai", var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 5vw, 6rem);
+    line-height: 1.1;
+    color: oklch(1 0 0 / 0.85);
+    user-select: none;
+    transition: transform 0.05s linear;
+  }
+
+  .sahl-beyond-figures {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: clamp(0rem, 4vw, 6rem);
+    pointer-events: none;
+  }
+
+  .sahl-beyond-figure {
+    display: block;
+    width: auto;
+    max-width: none;
+    height: 82%;
+    filter: drop-shadow(0 30px 60px oklch(0.16 0.004 60 / 0.28));
+  }
+
+  .sahl-beyond-figure-man {
+    transform: translateY(2%);
+  }
+
+  .sahl-beyond-figure-woman {
+    transform: translateY(2%);
+  }
+
+  .sahl-beyond-marquee {
+    width: 100%;
+    background: oklch(1 0 0);
+    overflow: hidden;
+    padding: 2rem 0;
+    border-block: 1px solid var(--border);
+  }
+
+  .sahl-beyond-marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: sahl-beyond-scroll 18s linear infinite;
+  }
+
+  .sahl-beyond-marquee-copy {
+    flex-shrink: 0;
+    font-family: "Almarai", var(--font-display);
+    font-weight: 800;
+    color: var(--gold-deep);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    padding-inline-end: 0.25em;
+    user-select: none;
+  }
+}
+
+@keyframes sahl-beyond-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sahl-beyond-marquee-track {
+    animation: none;
+  }
+}
