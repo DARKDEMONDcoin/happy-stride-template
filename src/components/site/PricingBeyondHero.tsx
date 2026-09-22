@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import manFigure from "@/assets/hero/sahl-man-bust.png";
+import manFigure from "@/assets/hero/sahl-man-bust-fixed.png";
 import womanFigure from "@/assets/hero/sahl-woman-bust.png";
 
 /**
