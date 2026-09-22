@@ -17,6 +17,8 @@ import {
 } from "lucide-react";
 
 import { PageShell, PageHero, CtaBand } from "@/components/site/PageShell";
+import { PricingBeyondHero } from "@/components/site/PricingBeyondHero";
+
 import { Reveal } from "@/components/Reveal";
 import { plans, priceOf, currencyOf, yearlyDiscount } from "@/data/pricing";
 import { useRegion } from "@/hooks/use-region";
