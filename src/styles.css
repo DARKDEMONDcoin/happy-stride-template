@@ -46173,12 +46173,13 @@ html {
   .sahl-beyond-words {
     position: absolute;
     inset: 0;
-    bottom: 7vh;
+    bottom: 9vh;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    padding: 0 clamp(2rem, 5vw, 6rem);
+    padding: 0 clamp(2.5rem, 5vw, 6rem);
     pointer-events: none;
+    z-index: 12;
   }
 
   .sahl-beyond-col {
@@ -46194,7 +46195,7 @@ html {
   .sahl-beyond-word {
     font-family: "Almarai", var(--font-sans);
     font-weight: 700;
-    font-size: clamp(1.8rem, 5vw, 6rem);
+    font-size: clamp(1.7rem, 3.6vw, 4.5rem);
     line-height: 1.1;
     color: oklch(1 0 0 / 0.9);
     text-shadow: 0 3px 18px oklch(0.16 0.004 60 / 0.32);
@@ -46209,28 +46210,28 @@ html {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: clamp(-3rem, -2vw, -1rem);
+    gap: clamp(0.5rem, 2vw, 2.5rem);
+    padding-inline: clamp(3rem, 8vw, 9rem);
     pointer-events: none;
   }
 
   .sahl-beyond-figure {
     display: block;
-    width: auto;
-    width: min(47vw, 680px);
-    max-width: 50%;
+    width: min(38vw, 550px);
+    max-width: calc(50% - 1.25rem);
     height: auto;
-    max-height: 82%;
+    max-height: 76%;
     object-fit: contain;
     object-position: center bottom;
     filter: drop-shadow(0 26px 44px oklch(0.16 0.004 60 / 0.24));
   }
 
   .sahl-beyond-figure-man {
-    transform: translate(4%, 2%);
+    transform: translateY(2%);
   }
 
   .sahl-beyond-figure-woman {
-    transform: translate(-4%, 2%);
+    transform: translateY(2%);
   }
 
   .sahl-beyond-marquee {
@@ -46270,33 +46271,34 @@ html {
   }
 
   .sahl-beyond-words {
-    padding: 0 3vw;
-    bottom: 7vh;
+    padding: 0 4vw;
+    bottom: 5vh;
   }
 
   .sahl-beyond-word {
-    font-size: clamp(1.35rem, 3.8vw, 2.75rem);
+    font-size: clamp(1.25rem, 3vw, 2.25rem);
     text-shadow: 0 2px 14px oklch(0.16 0.004 60 / 0.18);
   }
 
   .sahl-beyond-figures {
-    gap: 0;
+    gap: 1rem;
+    padding-inline: 6vw;
   }
 
   .sahl-beyond-figure {
-    width: 53vw;
-    max-width: 53%;
+    width: 41vw;
+    max-width: calc(50% - 0.5rem);
     height: auto;
-    max-height: 75%;
+    max-height: 70%;
     object-fit: contain;
   }
 
   .sahl-beyond-figure-man {
-    transform: translate(10%, 1%);
+    transform: translateY(1%);
   }
 
   .sahl-beyond-figure-woman {
-    transform: translate(-10%, 1%);
+    transform: translateY(1%);
   }
 
   .sahl-beyond-marquee {
