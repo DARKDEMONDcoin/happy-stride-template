@@ -96,11 +96,11 @@ export function PricingBeyondHero() {
               ))}
             </div>
           </div>
-        </div>
 
-        <div className="sahl-beyond-figures">
-          <img src={manFigure} alt="" className="sahl-beyond-figure sahl-beyond-figure-man" />
-          <img src={womanFigure} alt="" className="sahl-beyond-figure sahl-beyond-figure-woman" />
+          <div className="sahl-beyond-figures">
+            <img src={womanFigure} alt="" className="sahl-beyond-figure sahl-beyond-figure-woman" />
+            <img src={manFigure} alt="" className="sahl-beyond-figure sahl-beyond-figure-man" />
+          </div>
         </div>
       </section>
 
