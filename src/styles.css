@@ -46162,7 +46162,7 @@ html {
     inset: 0;
     font-family: "Almarai", var(--font-display);
     font-weight: 800;
-    font-size: clamp(8rem, 26vw, 26rem);
+    font-size: clamp(7rem, 20vw, 20rem);
     line-height: 0.85;
     letter-spacing: 0.02em;
     user-select: none;
