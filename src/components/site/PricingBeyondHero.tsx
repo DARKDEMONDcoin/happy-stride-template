@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-import manFigure from "@/assets/hero/sahl-man-bust-fixed.png";
-import womanFigure from "@/assets/hero/sahl-woman-bust.png";
+import menEast from "@/assets/hero/arab-men-east-strip.png";
+import menWest from "@/assets/hero/arab-men-west-strip.png";
+import womenEast from "@/assets/hero/arab-women-east-strip.png";
+import womenWest from "@/assets/hero/arab-women-west-strip.png";
 
 /**
  * مقدمة سينمائية لصفحة الأسعار — تظهر فقط على الكمبيوتر والشاشات الكبيرة.
@@ -13,6 +15,8 @@ const rightWords = ["انطلق", "بداية", "هدف", "اشتعال"];
 
 const marqueeText =
   "شرارة · تخيّل · انطلق · تطوّر · بداية · إنجاز · هدف · سهل · ";
+
+const arabPeople = [menEast, womenWest, menWest, womenEast];
 
 const layers = [
   { color: "var(--sahl-hero-teal)", offset: 36 },
@@ -97,9 +101,23 @@ export function PricingBeyondHero() {
             </div>
           </div>
 
-          <div className="sahl-beyond-figures">
-            <img src={womanFigure} alt="" className="sahl-beyond-figure sahl-beyond-figure-woman" />
-            <img src={manFigure} alt="" className="sahl-beyond-figure sahl-beyond-figure-man" />
+          <div className="sahl-beyond-people" aria-hidden="true">
+            <div className="sahl-beyond-people-track">
+              {[0, 1].map((copy) => (
+                <div className="sahl-beyond-people-set" key={copy}>
+                  {arabPeople.map((src, index) => (
+                    <img
+                      key={`${copy}-${src}`}
+                      src={src}
+                      alt=""
+                      width={1920}
+                      height={342}
+                      loading={copy === 0 && index === 0 ? "eager" : "lazy"}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
