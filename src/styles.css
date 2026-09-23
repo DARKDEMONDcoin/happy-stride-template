@@ -46147,7 +46147,7 @@ html {
       color-mix(in oklab, var(--sahl-hero-bg) 82%, var(--sahl-hero-teal) 18%) 34%,
       transparent 100%
     );
-    opacity: 0.34;
+    opacity: 0.26;
     pointer-events: none;
   }
 
@@ -46232,25 +46232,13 @@ html {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: clamp(4.7rem, 11vh, 8.25rem);
+    bottom: clamp(6.15rem, 14vh, 10rem);
     z-index: 10;
     width: 100%;
-    height: clamp(20rem, 48vh, 32rem);
+    height: clamp(19rem, 45vh, 30rem);
     overflow: hidden;
     pointer-events: none;
     direction: ltr;
-  }
-
-  .sahl-beyond-people::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    height: 34%;
-    background: linear-gradient(to top, var(--sahl-hero-bg) 0%, var(--sahl-hero-bg) 70%, transparent 100%);
-    pointer-events: none;
   }
 
   .sahl-beyond-people-track {
@@ -46330,12 +46318,8 @@ html {
   }
 
   .sahl-beyond-people {
-    bottom: clamp(4rem, 8.7vh, 6rem);
-    height: clamp(20rem, 48vh, 27rem);
-  }
-
-  .sahl-beyond-people::after {
-    height: 36%;
+    bottom: clamp(5.25rem, 11.5vh, 7rem);
+    height: clamp(18rem, 43vh, 24rem);
   }
 
   .sahl-beyond-marquee {

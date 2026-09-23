@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import arabPeopleParade from "@/assets/hero/arab-people-parade.png";
+import arabPeopleParade from "@/assets/hero/arab-people-parade-neck.png";
 
 /**
  * مقدمة سينمائية لصفحة الأسعار — تظهر فقط على الكمبيوتر والشاشات الكبيرة.
