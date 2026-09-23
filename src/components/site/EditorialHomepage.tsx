@@ -33,7 +33,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { plans } from "@/data/pricing";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
+import { plans, priceOf, currencyOf, yearlyDiscount } from "@/data/pricing";
+import { useRegion } from "@/hooks/use-region";
 import ecommerceSector from "@/assets/sectors/ecommerce.jpg";
 import restaurantsSector from "@/assets/sectors/restaurants.jpg";
 import clinicsSector from "@/assets/sectors/clinics.jpg";
@@ -605,6 +607,9 @@ export function EditorialHomepage() {
   const [sector, setSector] = useState(0);
   const [sample, setSample] = useState(0);
   const [sampleExpanded, setSampleExpanded] = useState(false);
+  const [pricingYearly, setPricingYearly] = useState(true);
+  const { country } = useRegion();
+  const pricingCurrency = currencyOf(country);
   const currentSector = sectors[sector] ?? sectors[0];
   const currentSample = sampleBoards[sample] ?? sampleBoards[0];
   /** إيقاف حركات المشاهد خارج الشاشة حتى يبقى التمرير سلسًا تمامًا. */
@@ -1271,12 +1276,12 @@ export function EditorialHomepage() {
         </div>
       </section>
 
-      <section className="sahl-section sahl-pricing">
+      <section className="sahl-section sahl-pricing" aria-labelledby="home-pricing-title">
         <div className="sahl-shell">
           <Reveal>
             <header className="sahl-section-head">
               <span>عدد الموظفين يتبع حجم العمل</span>
-              <h2>
+              <h2 id="home-pricing-title">
                 ابدأ بدور واحد.
                 <br />
                 <em>وأضف الفريق حين تحتاجه.</em>
@@ -1287,35 +1292,72 @@ export function EditorialHomepage() {
               </p>
             </header>
           </Reveal>
+          <Reveal>
+            <div className="sahl-home-billing" role="radiogroup" aria-label="دورة الفوترة">
+              <Button
+                type="button"
+                variant="ghost"
+                role="radio"
+                aria-checked={!pricingYearly}
+                className={!pricingYearly ? "is-active" : undefined}
+                onClick={() => setPricingYearly(false)}
+              >
+                شهري
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                role="radio"
+                aria-checked={pricingYearly}
+                className={pricingYearly ? "is-active" : undefined}
+                onClick={() => setPricingYearly(true)}
+              >
+                سنوي <small>وفّر {yearlyDiscount * 100}%</small>
+              </Button>
+            </div>
+          </Reveal>
           <div className="sahl-plan-grid">
-            {plans.map((plan) => (
-              <Reveal key={plan.id}>
-                <article className={plan.highlight ? "is-featured" : ""}>
-                  {plan.highlight && <span className="sahl-plan-tag">الفريق كاملًا</span>}
-                  <small>{plan.tag}</small>
-                  <h3>{plan.name}</h3>
+            {plans.map((plan, planIndex) => {
+              const displayPrice = priceOf(plan, pricingYearly, country);
+              const numericPrice = Number(displayPrice.replace(/,/g, ""));
+              return (
+              <Reveal key={plan.id} className="sahl-plan-reveal">
+                <article
+                  className={`liquid-glass-sahl sahl-home-plan ${plan.highlight ? "is-featured" : ""}`}
+                  style={{ "--plan-order": planIndex } as CSSProperties}
+                >
+                  {plan.highlight && <span className="sahl-plan-tag">الأكثر اختيارًا</span>}
+                  <header className="sahl-home-plan-head">
+                    <h3>{plan.name}</h3>
+                    <p>{plan.desc}</p>
+                  </header>
                   <div className="sahl-price">
-                    {plan.monthly ? (
+                    {Number.isFinite(numericPrice) ? (
                       <>
-                        <strong>{plan.monthly.toLocaleString("ar-SA")}</strong>
-                        <span>ر.س كل شهر</span>
+                        <strong><AnimatedNumber value={numericPrice} duration={450} /></strong>
+                        <span>{pricingCurrency.label} / شهريًا</span>
                       </>
                     ) : (
-                      <strong>تسعير مخصص</strong>
+                      <strong className="is-custom">حسب الطلب</strong>
                     )}
                   </div>
-                  <p>{plan.desc}</p>
+                  <div className="sahl-plan-divider" aria-hidden="true" />
                   <ul>
-                    {plan.perks.slice(0, 5).map((perk) => (
-                      <li key={perk}>
-                        <Check />
-                        {perk}
+                    {plan.perks.map((perk, perkIndex) => (
+                      <li
+                        key={perk}
+                        style={{ "--perk-order": perkIndex } as CSSProperties}
+                      >
+                        <span className="sahl-home-perk-icon" data-tone={perkIndex % 3}>
+                          <Check aria-hidden="true" />
+                        </span>
+                        <span>{perk}</span>
                       </li>
                     ))}
                   </ul>
-                  <Button asChild variant={plan.highlight ? "default" : "outline"}>
+                  <Button asChild variant="outline" className="sahl-home-plan-cta">
                     {plan.monthly ? (
-                      <Link to="/auth" search={{ mode: "signup" as const }}>
+                      <Link to="/auth" search={{ mode: "signup" as const, plan: plan.id }}>
                         {plan.cta}
                         <ArrowLeft />
                       </Link>
@@ -1328,7 +1370,8 @@ export function EditorialHomepage() {
                   </Button>
                 </article>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
