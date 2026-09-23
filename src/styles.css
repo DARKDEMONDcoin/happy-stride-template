@@ -46238,11 +46238,11 @@ html {
   }
 
   .sahl-parade-portrait {
-    position: absolute;
-    inset: -6% -6% 0;
     display: block;
-    background-repeat: no-repeat;
-    background-size: 4928% 112%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 }
 
