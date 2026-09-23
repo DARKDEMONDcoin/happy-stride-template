@@ -46516,3 +46516,318 @@ html {
     animation-play-state: paused;
   }
 }
+
+/* قسم أسعار الصفحة الرئيسية — مستقل عن صفحة /pricing */
+@property --sahl-price-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes sahl-price-border-spin {
+  to { --sahl-price-angle: 360deg; }
+}
+
+@keyframes sahl-perk-arrive {
+  from { opacity: 0; transform: translate3d(0, 0.45rem, 0) scale(0.94); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.sahl-white-home .sahl-pricing {
+  --pricing-night: oklch(0.195 0.012 54);
+  --pricing-cream: oklch(0.94 0.025 83);
+  --pricing-brick: oklch(0.523 0.134 34.5);
+  --pricing-gold: oklch(0.64 0.13 72);
+  --pricing-teal: oklch(0.47 0.077 176);
+  overflow: hidden;
+  background: var(--pricing-night);
+  color: var(--pricing-cream);
+}
+
+.sahl-pricing .sahl-section-head > span {
+  color: color-mix(in oklab, var(--pricing-gold) 84%, var(--pricing-cream));
+}
+
+.sahl-pricing .sahl-section-head h2,
+.sahl-pricing .sahl-section-head h2 em {
+  color: var(--pricing-cream);
+  font-family: "Almarai", sans-serif;
+}
+
+.sahl-pricing .sahl-section-head h2 em {
+  color: color-mix(in oklab, var(--pricing-cream) 58%, transparent);
+}
+
+.sahl-pricing .sahl-section-head > p {
+  color: color-mix(in oklab, var(--pricing-cream) 64%, transparent);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.sahl-pricing .sahl-section-head p a {
+  color: color-mix(in oklab, var(--pricing-gold) 88%, var(--pricing-cream));
+}
+
+.sahl-home-billing {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 22rem);
+  margin: -1rem auto 3.5rem;
+  padding: 0.3rem;
+  border: 1px solid color-mix(in oklab, var(--pricing-cream) 14%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--pricing-cream) 6%, transparent);
+}
+
+.sahl-home-billing [data-slot="button"] {
+  min-width: 0;
+  border-radius: 999px;
+  color: color-mix(in oklab, var(--pricing-cream) 62%, transparent);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-weight: 700;
+}
+
+.sahl-home-billing [data-slot="button"].is-active {
+  background: var(--pricing-cream);
+  color: var(--pricing-night);
+  box-shadow: 0 0.55rem 1.5rem color-mix(in oklab, var(--pricing-night) 55%, transparent);
+}
+
+.sahl-home-billing small {
+  margin-inline-start: 0.35rem;
+  color: var(--pricing-brick);
+  font-size: 0.65rem;
+}
+
+.sahl-pricing .sahl-plan-grid {
+  gap: 1.4rem;
+  align-items: stretch;
+}
+
+.sahl-pricing .sahl-plan-reveal {
+  height: 100%;
+}
+
+.sahl-pricing .sahl-plan-reveal:nth-child(2) { transition-delay: 90ms; }
+.sahl-pricing .sahl-plan-reveal:nth-child(3) { transition-delay: 180ms; }
+
+.sahl-pricing .sahl-plan-grid article.sahl-home-plan {
+  position: relative;
+  isolation: isolate;
+  min-height: 42rem;
+  height: 100%;
+  padding: 2.25rem 1.8rem 1.75rem;
+  overflow: visible;
+  border: 1px solid color-mix(in oklab, var(--pricing-cream) 14%, transparent);
+  border-radius: 1.45rem;
+  background: color-mix(in oklab, var(--pricing-cream) 6%, transparent);
+  box-shadow: 0 1.5rem 3.8rem -3rem color-mix(in oklab, var(--pricing-night) 88%, transparent);
+  backdrop-filter: blur(28px) saturate(150%);
+  color: var(--pricing-cream);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+
+.sahl-pricing .sahl-plan-grid article.sahl-home-plan::before {
+  border-radius: inherit;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--pricing-cream) 19%, transparent), transparent 36%, color-mix(in oklab, var(--pricing-teal) 18%, transparent));
+}
+
+.sahl-home-plan > * {
+  position: relative;
+  z-index: 3;
+}
+
+.sahl-pricing .sahl-plan-grid article.sahl-home-plan.is-featured {
+  border-color: color-mix(in oklab, var(--pricing-brick) 88%, transparent);
+  box-shadow: 0 2.4rem 5.8rem -2.65rem color-mix(in oklab, var(--pricing-brick) 68%, transparent);
+}
+
+.sahl-pricing .sahl-plan-tag {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 50%;
+  transform: translate(50%, -50%);
+  min-width: 8rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid color-mix(in oklab, var(--pricing-cream) 30%, transparent);
+  border-radius: 999px;
+  background: linear-gradient(110deg, var(--pricing-brick), var(--pricing-gold));
+  box-shadow: 0 0.75rem 1.8rem -0.85rem color-mix(in oklab, var(--pricing-brick) 85%, transparent);
+  color: var(--pricing-cream);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.sahl-home-plan-head h3 {
+  margin: 0;
+  color: var(--pricing-cream);
+  font-family: "Almarai", sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+}
+
+.sahl-home-plan-head p,
+.sahl-pricing .sahl-plan-grid article.sahl-home-plan > p {
+  min-height: 2.8rem;
+  margin-top: 0.65rem;
+  color: color-mix(in oklab, var(--pricing-cream) 62%, transparent);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.sahl-pricing .sahl-price {
+  min-height: 7.3rem;
+  margin-top: 1.15rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.sahl-pricing .sahl-price strong {
+  color: var(--pricing-cream);
+  font-family: "Almarai", sans-serif;
+  font-size: clamp(3.35rem, 4.5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.sahl-pricing .sahl-price strong.is-custom {
+  font-size: clamp(2.15rem, 3vw, 3rem);
+}
+
+.sahl-pricing .sahl-price span {
+  padding-bottom: 0.5rem;
+  color: color-mix(in oklab, var(--pricing-cream) 58%, transparent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sahl-plan-divider {
+  height: 1px;
+  background: color-mix(in oklab, var(--pricing-cream) 13%, transparent);
+}
+
+.sahl-pricing .sahl-plan-grid article.sahl-home-plan ul {
+  margin: 1.45rem 0 1.75rem;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+  border: 0;
+}
+
+.sahl-pricing .sahl-plan-grid article.sahl-home-plan li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: color-mix(in oklab, var(--pricing-cream) 82%, transparent);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.sahl-home-perk-icon {
+  display: grid;
+  width: 1.45rem;
+  height: 1.45rem;
+  flex: 0 0 1.45rem;
+  place-items: center;
+  border-radius: 0.45rem;
+  background: color-mix(in oklab, var(--perk-color) 18%, transparent);
+  color: var(--perk-color);
+}
+
+.sahl-home-perk-icon[data-tone="0"] { --perk-color: var(--pricing-brick); }
+.sahl-home-perk-icon[data-tone="1"] { --perk-color: var(--pricing-gold); }
+.sahl-home-perk-icon[data-tone="2"] { --perk-color: var(--pricing-teal); }
+
+.sahl-home-perk-icon svg,
+.sahl-pricing .sahl-plan-grid li .sahl-home-perk-icon svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: currentColor;
+}
+
+.sahl-plan-reveal.is-visible .sahl-home-plan li {
+  animation: sahl-perk-arrive 360ms ease-out both;
+  animation-delay: calc(280ms + var(--perk-order) * 55ms + var(--plan-order) * 70ms);
+}
+
+.sahl-pricing .sahl-plan-grid article.sahl-home-plan > .sahl-home-plan-cta {
+  width: 100%;
+  min-height: 3.15rem;
+  margin-top: auto;
+  border-color: var(--pricing-brick);
+  border-radius: 999px;
+  background: transparent;
+  color: color-mix(in oklab, var(--pricing-brick) 60%, var(--pricing-cream));
+  font-weight: 800;
+}
+
+.sahl-pricing .sahl-home-plan-cta svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sahl-pricing .sahl-home-plan.is-featured > .sahl-home-plan-cta {
+  border-color: transparent;
+  background: linear-gradient(110deg, var(--pricing-brick), var(--pricing-gold));
+  color: var(--pricing-cream);
+  box-shadow: 0 0 1.6rem color-mix(in oklab, var(--pricing-brick) 36%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .sahl-pricing .sahl-plan-grid article.sahl-home-plan::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: -1px;
+    padding: 1.4px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--sahl-price-angle), var(--pricing-brick), var(--pricing-gold), var(--pricing-teal), var(--pricing-brick));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: sahl-price-border-spin 4s linear infinite;
+  }
+
+  .sahl-pricing .sahl-plan-grid article.sahl-home-plan.is-featured {
+    transform: scale(1.04);
+  }
+
+  .sahl-pricing .sahl-plan-grid article.sahl-home-plan.is-featured::after {
+    padding: 2px;
+    animation-duration: 3s;
+  }
+
+  .sahl-pricing .sahl-plan-grid article.sahl-home-plan:hover {
+    transform: translateY(-0.35rem);
+    box-shadow: 0 2.3rem 5rem -2.6rem color-mix(in oklab, var(--pricing-gold) 52%, transparent);
+  }
+
+  .sahl-pricing .sahl-plan-grid article.sahl-home-plan.is-featured:hover {
+    transform: translateY(-0.35rem) scale(1.04);
+  }
+}
+
+@media (max-width: 1023px) {
+  .sahl-home-billing { margin-bottom: 2.6rem; }
+  .sahl-pricing .sahl-plan-grid { gap: 2rem; }
+  .sahl-pricing .sahl-plan-grid article.sahl-home-plan {
+    min-height: 0;
+    padding: 2rem 1.35rem 1.35rem;
+  }
+  .sahl-home-plan-head p { min-height: 0; }
+  .sahl-pricing .sahl-price { min-height: 6.5rem; }
+  .sahl-pricing .sahl-price strong { font-size: clamp(3.6rem, 15vw, 5rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sahl-pricing .sahl-plan-grid article.sahl-home-plan,
+  .sahl-plan-reveal.is-visible .sahl-home-plan li,
+  .sahl-pricing .sahl-plan-grid article.sahl-home-plan::after {
+    animation: none;
+    transition: none;
+  }
+  .sahl-plan-reveal.is-visible .sahl-home-plan li { opacity: 1; transform: none; }
+}
