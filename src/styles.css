@@ -46208,13 +46208,20 @@ html {
   .sahl-parade-track {
     display: flex;
     width: max-content;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    contain: layout paint;
     will-change: transform;
-    animation: sahl-parade-forward 30s linear infinite;
+    animation: sahl-parade-forward 40s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .sahl-parade.is-ready .sahl-parade-track {
+    animation-play-state: running;
   }
 
   .sahl-parade-track.is-reverse {
     animation-name: sahl-parade-reverse;
-    animation-duration: 25s;
   }
 
   .sahl-parade-set {
@@ -46243,6 +46250,7 @@ html {
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    transform: translateZ(0);
   }
 }
 
