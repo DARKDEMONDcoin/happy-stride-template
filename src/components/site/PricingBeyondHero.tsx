@@ -1,4 +1,4 @@
-const portraitModules = import.meta.glob("/src/assets/hero/portraits/*.png", {
+const portraitModules = import.meta.glob("/src/assets/hero/portraits-display/*.webp", {
   eager: true,
   query: "?url",
   import: "default",
@@ -31,7 +31,7 @@ const countries = [
 
 const portraits = countries.flatMap((country) =>
   (["man", "woman"] as const).map((gender) => ({
-    src: portraitModules[`/src/assets/hero/portraits/${country}-${gender}.png`],
+    src: portraitModules[`/src/assets/hero/portraits-display/${country}-${gender}.webp`],
     key: `${country}-${gender}`,
   })),
 );
@@ -50,7 +50,7 @@ function PersonPortrait({ portrait }: { portrait: (typeof portraits)[number] }) 
         alt=""
         width={1024}
         height={1280}
-        loading="lazy"
+        loading="eager"
         decoding="async"
       />
     </span>
