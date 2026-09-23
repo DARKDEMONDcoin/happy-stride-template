@@ -14346,7 +14346,7 @@ section:has(> .integration-grid-wave) {
   line-height: 1.45;
 }
 
-/* Desktop chat uses one centered reading rail from messages through composer. */
+/* Desktop chat uses the available workspace while keeping long text readable. */
 .is-chat-shell {
   height: 100dvh;
   min-height: 0;
@@ -14395,17 +14395,17 @@ section:has(> .integration-grid-wave) {
   }
   .is-chat-shell .chat-message-column,
   .is-chat-shell .chat-composer {
-    width: min(100%, 64rem);
+    width: min(calc(100% - 2rem), 88rem);
   }
 }
 
 @media (min-width: 1600px) {
   .is-chat-shell .chat-message-column,
   .is-chat-shell .chat-composer {
-    width: min(100%, 68rem);
+    width: min(calc(100% - 3rem), 94rem);
   }
   .is-chat-shell .chat-message-column {
-    padding-inline: 2rem;
+    padding-inline: 2.5rem;
   }
 }
 
