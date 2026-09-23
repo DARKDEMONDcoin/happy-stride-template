@@ -40,7 +40,7 @@ type Portrait = {
 
 function makePair(group: string): [Portrait, Portrait] {
   return (["man", "woman"] as const).map((gender) => ({
-    src: portraitModules[`/src/assets/hero/portraits-display/${country}-${gender}.webp`],
+    src: portraitModules[`/src/assets/hero/portraits-display/${group}-${gender}.webp`],
     key: `${group}-${gender}`,
   })) as [Portrait, Portrait];
 }
@@ -111,7 +111,11 @@ export function PricingBeyondHero() {
           new Promise<void>((resolve) => {
             const image = new Image();
             image.onload = () => {
-              image.decode?.().catch(() => undefined).finally(resolve);
+              if (typeof image.decode === "function") {
+                image.decode().catch(() => undefined).finally(resolve);
+                return;
+              }
+              resolve();
             };
             image.onerror = () => resolve();
             image.src = src;
