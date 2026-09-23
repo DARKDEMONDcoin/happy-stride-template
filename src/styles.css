@@ -46136,6 +46136,21 @@ html {
     background: var(--sahl-hero-bg);
   }
 
+  .sahl-beyond-stage::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 42vh;
+    background: linear-gradient(
+      to top,
+      color-mix(in oklab, var(--sahl-hero-bg) 92%, var(--sahl-hero-gold) 8%) 0%,
+      color-mix(in oklab, var(--sahl-hero-bg) 82%, var(--sahl-hero-teal) 18%) 34%,
+      transparent 100%
+    );
+    opacity: 0.34;
+    pointer-events: none;
+  }
+
   .sahl-beyond-sticky {
     position: sticky;
     top: 0;
@@ -46173,7 +46188,7 @@ html {
   .sahl-beyond-words {
     position: absolute;
     left: 50%;
-    bottom: clamp(1.35rem, 4.3vh, 3.5rem);
+    bottom: clamp(1.35rem, 4vh, 3.35rem);
     z-index: 14;
     display: flex;
     width: min(88vw, 82rem);
@@ -46184,9 +46199,9 @@ html {
     padding: clamp(0.75rem, 1vw, 1rem) clamp(1.15rem, 2vw, 2.5rem);
     border: 1px solid oklch(1 0 0 / 0.24);
     border-radius: 999px;
-    background: oklch(0.16 0.004 60 / 0.22);
-    box-shadow: 0 18px 48px oklch(0.16 0.004 60 / 0.18);
-    backdrop-filter: blur(10px);
+    background: color-mix(in oklab, var(--sahl-hero-bg) 62%, transparent);
+    box-shadow: 0 18px 48px oklch(0.16 0.004 60 / 0.18), inset 0 1px 0 oklch(1 0 0 / 0.14);
+    backdrop-filter: blur(12px);
     pointer-events: none;
     transition: opacity 0.05s linear;
   }
@@ -46217,14 +46232,25 @@ html {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: clamp(4.8rem, 11.5vh, 8.5rem);
+    bottom: clamp(4.7rem, 11vh, 8.25rem);
     z-index: 10;
     width: 100%;
-    height: clamp(18rem, 42vh, 28rem);
+    height: clamp(20rem, 48vh, 32rem);
     overflow: hidden;
     pointer-events: none;
     direction: ltr;
-    mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  }
+
+  .sahl-beyond-people::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    height: 34%;
+    background: linear-gradient(to top, var(--sahl-hero-bg) 0%, var(--sahl-hero-bg) 70%, transparent 100%);
+    pointer-events: none;
   }
 
   .sahl-beyond-people-track {
@@ -46288,7 +46314,7 @@ html {
   }
 
   .sahl-beyond-words {
-    bottom: clamp(1rem, 3.5vh, 2rem);
+    bottom: clamp(1rem, 3.2vh, 1.85rem);
     width: min(91vw, 56rem);
     gap: clamp(0.35rem, 0.8vw, 0.75rem);
     padding: 0.65rem 1rem;
@@ -46304,8 +46330,12 @@ html {
   }
 
   .sahl-beyond-people {
-    bottom: clamp(4.4rem, 9vh, 6.5rem);
-    height: clamp(15rem, 37vh, 21rem);
+    bottom: clamp(4rem, 8.7vh, 6rem);
+    height: clamp(20rem, 48vh, 27rem);
+  }
+
+  .sahl-beyond-people::after {
+    height: 36%;
   }
 
   .sahl-beyond-marquee {
