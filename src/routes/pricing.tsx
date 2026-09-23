@@ -71,7 +71,7 @@ function PricingPage() {
   if (!selected) return null;
   return (
     <PageShell className="sahl-pricing-shell bg-background" hideFooterOnMobile>
-      <section className="sahl-upgrade md:hidden" aria-labelledby="mobile-pricing-title">
+      <section className="sahl-upgrade lg:hidden" aria-labelledby="mobile-pricing-title">
         <div className="sahl-upgrade-dots" aria-hidden="true" />
         <div className="sahl-upgrade-inner">
           <div className="sahl-upgrade-topbar">
@@ -195,7 +195,7 @@ function PricingPage() {
         </div>
       </section>
 
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <PricingBeyondHero />
 
 
@@ -204,75 +204,52 @@ function PricingPage() {
             <span>العملة حسب بلدك:</span>
             <RegionPicker />
           </div>
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="pricing-desktop-grid grid gap-6 lg:grid-cols-3">
             {plans.map((p, i) => (
-              <Reveal key={p.id} delay={i * 70}>
+              <Reveal key={p.id} delay={i * 70} className="pricing-desktop-reveal">
                 <div
-                  className={
-                    p.highlight
-                      ? "relative h-full overflow-hidden rounded-3xl p-[2px] shadow-lift"
-                      : "h-full rounded-3xl border border-border bg-card p-8 shadow-card"
-                  }
-                  style={
-                    p.highlight
-                      ? { backgroundImage: "var(--gradient-aurora)", backgroundSize: "200% 200%" }
-                      : undefined
-                  }
+                  className={`pricing-desktop-card ${p.highlight ? "is-featured" : ""}`}
                 >
-                  <div
-                    className={
-                      p.highlight ? "h-full rounded-[calc(1.5rem-2px)] bg-card p-8" : "contents"
-                    }
-                  >
-                    {p.highlight ? (
-                      <span className="mb-4 inline-flex rounded-full bg-jade/15 px-3 py-1 text-xs font-bold text-jade-deep">
-                        الأكثر اختياراً
-                      </span>
-                    ) : null}
-                    <h2 className="font-display text-2xl font-black">{p.name}</h2>
-                    <p className="mt-1 text-sm text-muted-foreground">{p.tag}</p>
-                    <div className="mt-6 flex items-end gap-2">
-                      <span className="font-display text-4xl font-black text-primary">
-                        {priceOf(p, false, country)}
-                      </span>
-                      {p.monthly !== null ? (
-                        <span className="pb-1 text-sm text-muted-foreground">
-                          {cur.label} / شهرياً
-                        </span>
-                      ) : null}
-                    </div>
+                  {p.highlight ? (
+                    <span className="pricing-desktop-badge">الأكثر اختياراً</span>
+                  ) : null}
 
-                    <ul className="mt-6 space-y-3">
-                      {p.perks.map((k) => (
-                        <li key={k} className="flex items-start gap-2.5">
-                          <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-md bg-jade/15 text-jade-deep">
-                            <Check className="size-3.5" strokeWidth={3} />
+                  <header className="pricing-desktop-card-head">
+                    <h2>{p.name}</h2>
+                    <p>{p.desc}</p>
+                  </header>
+
+                  <div className={`pricing-desktop-price ${p.monthly === null ? "is-custom" : ""}`}>
+                    <strong>{priceOf(p, false, country)}</strong>
+                    {p.monthly !== null ? <span>{cur.label} / شهرياً</span> : null}
+                  </div>
+
+                  <div className="pricing-desktop-divider" aria-hidden="true" />
+
+                  <ul className="pricing-desktop-perks">
+                    {p.perks.map((perk, index) => {
+                      const Icon = perkIcons[index % perkIcons.length] ?? Check;
+                      const tone = index % 3 === 0 ? "teal" : index % 3 === 1 ? "gold" : "brick";
+                      return (
+                        <li key={perk}>
+                          <span className="pricing-desktop-perk-icon" data-tone={tone}>
+                            <Icon strokeWidth={2.15} />
                           </span>
-                          <span className="leading-relaxed">{k}</span>
+                          <span>{perk}</span>
                         </li>
-                      ))}
-                    </ul>
+                      );
+                    })}
+                  </ul>
+
+                  <Button asChild variant="outline" className="pricing-desktop-cta">
                     {p.id === "scale" ? (
-                      <Link
-                        to="/contact"
-                        className="mt-8 block rounded-full border border-border py-3.5 text-center font-bold transition-colors hover:bg-secondary"
-                      >
-                        {p.cta}
-                      </Link>
+                      <Link to="/contact">{p.cta}</Link>
                     ) : (
-                      <Link
-                        to="/auth"
-                        search={{ mode: "signup", plan: p.id }}
-                        className={
-                          p.highlight
-                            ? "mt-8 block rounded-full bg-foreground py-3.5 text-center font-bold text-background transition-transform duration-300 hover:-translate-y-1"
-                            : "mt-8 block rounded-full border border-border py-3.5 text-center font-bold transition-colors hover:bg-secondary"
-                        }
-                      >
+                      <Link to="/auth" search={{ mode: "signup", plan: p.id }}>
                         {p.cta}
                       </Link>
                     )}
-                  </div>
+                  </Button>
                 </div>
               </Reveal>
             ))}
