@@ -46369,8 +46369,19 @@ html {
 }
 
 @media (min-width: 768px) {
+  .sahl-pricing-shell {
+    --sahl-pricing-page-bg: oklch(0.94 0.025 83);
+    background: var(--sahl-pricing-page-bg);
+  }
+
+  .sahl-pricing-shell > main,
+  .sahl-pricing-shell > main > .hidden,
+  .sahl-pricing-shell .sahl-page-cta {
+    background: var(--sahl-pricing-page-bg);
+  }
+
   .sahl-beyond {
-    --sahl-parade-bg: oklch(0.94 0.025 83);
+    --sahl-parade-bg: var(--sahl-pricing-page-bg);
     --sahl-parade-ink: oklch(0.27 0.018 45);
     --sahl-parade-brand: oklch(0.58 0.16 38);
     --sahl-parade-accent: oklch(0.52 0.09 175);
