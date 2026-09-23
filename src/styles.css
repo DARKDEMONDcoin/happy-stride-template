@@ -46172,46 +46172,59 @@ html {
 
   .sahl-beyond-words {
     position: absolute;
-    inset: 0;
-    bottom: 9vh;
+    left: 50%;
+    bottom: clamp(1.35rem, 4.3vh, 3.5rem);
+    z-index: 14;
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 0 clamp(2.5rem, 5vw, 6rem);
+    width: min(88vw, 82rem);
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.65rem, 1.5vw, 1.4rem);
+    padding: clamp(0.75rem, 1vw, 1rem) clamp(1.15rem, 2vw, 2.5rem);
+    border: 1px solid oklch(1 0 0 / 0.24);
+    border-radius: 999px;
+    background: oklch(0.16 0.004 60 / 0.22);
+    box-shadow: 0 18px 48px oklch(0.16 0.004 60 / 0.18);
+    backdrop-filter: blur(10px);
     pointer-events: none;
-    z-index: 8;
-  }
-
-  .sahl-beyond-col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .sahl-beyond-col-end {
-    align-items: flex-end;
+    transition: opacity 0.05s linear;
   }
 
   .sahl-beyond-word {
     font-family: "Almarai", var(--font-sans);
     font-weight: 700;
-    font-size: clamp(1.7rem, 3.6vw, 4.5rem);
-    line-height: 1.1;
+    font-size: clamp(1.15rem, 1.65vw, 2rem);
+    line-height: 1;
     color: oklch(1 0 0 / 0.9);
     text-shadow: 0 3px 18px oklch(0.16 0.004 60 / 0.32);
+    white-space: nowrap;
     user-select: none;
-    transition: transform 0.05s linear;
+  }
+
+  .sahl-beyond-word::after {
+    content: "·";
+    margin-inline-start: clamp(0.65rem, 1vw, 1rem);
+    color: var(--sahl-hero-gold);
+  }
+
+  .sahl-beyond-word:last-child::after {
+    content: "";
+    margin: 0;
   }
 
   .sahl-beyond-people {
     position: absolute;
-    inset: auto 0 0;
+    left: 0;
+    right: 0;
+    bottom: clamp(4.8rem, 11.5vh, 8.5rem);
     z-index: 10;
     width: 100%;
-    height: clamp(18rem, 43vh, 31rem);
+    height: clamp(18rem, 42vh, 28rem);
     overflow: hidden;
     pointer-events: none;
     direction: ltr;
+    mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
   }
 
   .sahl-beyond-people-track {
@@ -46219,7 +46232,7 @@ html {
     width: max-content;
     height: 100%;
     will-change: transform;
-    animation: sahl-people-scroll 54s linear infinite;
+    animation: sahl-people-scroll 72s linear infinite;
   }
 
   .sahl-beyond-people-set {
@@ -46235,7 +46248,7 @@ html {
     height: 100%;
     object-fit: contain;
     object-position: center bottom;
-    filter: drop-shadow(0 24px 38px oklch(0.16 0.004 60 / 0.2));
+    filter: drop-shadow(0 24px 38px oklch(0.16 0.004 60 / 0.22));
   }
 
   .sahl-beyond-marquee {
@@ -46275,17 +46288,24 @@ html {
   }
 
   .sahl-beyond-words {
-    padding: 0 4vw;
-    bottom: 5vh;
+    bottom: clamp(1rem, 3.5vh, 2rem);
+    width: min(91vw, 56rem);
+    gap: clamp(0.35rem, 0.8vw, 0.75rem);
+    padding: 0.65rem 1rem;
   }
 
   .sahl-beyond-word {
-    font-size: clamp(1.25rem, 3vw, 2.25rem);
+    font-size: clamp(0.85rem, 1.65vw, 1.15rem);
     text-shadow: 0 2px 14px oklch(0.16 0.004 60 / 0.18);
   }
 
+  .sahl-beyond-word::after {
+    margin-inline-start: clamp(0.35rem, 0.7vw, 0.65rem);
+  }
+
   .sahl-beyond-people {
-    height: clamp(15rem, 39vh, 24rem);
+    bottom: clamp(4.4rem, 9vh, 6.5rem);
+    height: clamp(15rem, 37vh, 21rem);
   }
 
   .sahl-beyond-marquee {
