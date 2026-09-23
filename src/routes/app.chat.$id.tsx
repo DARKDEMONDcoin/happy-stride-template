@@ -525,13 +525,6 @@ const ALL_APP_TOOLS: WorkTool[] = [
     to: "/app/settings",
     icon: SlidersHorizontal,
   },
-  {
-    id: "learning",
-    title: "تطور الفريق",
-    description: "كيف يتحسن موظفوك",
-    to: "/app/learning",
-    icon: Sparkles,
-  },
   { id: "discovery", title: "الاكتشاف", description: "فرص جديدة", to: "/app/discovery", icon: Bot },
 ];
 
