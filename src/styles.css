@@ -46390,6 +46390,7 @@ html {
   .sahl-beyond-copy {
     position: relative;
     z-index: 2;
+    grid-row: 2;
     width: min(90vw, 78rem);
     margin-inline: auto;
     text-align: center;
@@ -46427,7 +46428,7 @@ html {
   .sahl-parade {
     display: grid;
     gap: clamp(0.85rem, 1.8vh, 1.35rem);
-    margin-top: clamp(2rem, 3.5vh, 3rem);
+    grid-row: 4;
     direction: ltr;
   }
 
