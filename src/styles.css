@@ -349,10 +349,16 @@
 /* شاشة ترقية الأسعار على الهاتف */
 @keyframes sahl-pricing-wave-run {
   from {
-    transform: translate3d(22%, 0, 0);
+    background-position:
+      0 0,
+      14px 14px,
+      28px 28px;
   }
   to {
-    transform: translate3d(-22%, 0, 0);
+    background-position:
+      -42px 0,
+      -28px 14px,
+      -14px 28px;
   }
 }
 
@@ -439,7 +445,7 @@
     mask-repeat: no-repeat;
     opacity: 0.7;
     animation: sahl-pricing-wave-run 2.35s linear infinite;
-    will-change: transform;
+    will-change: background-position;
   }
 
   .sahl-upgrade-inner {
