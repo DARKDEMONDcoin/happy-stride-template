@@ -1203,7 +1203,7 @@ function ChatView({
           <div
             ref={columnRef}
             onScroll={onColumnScroll}
-            className="chat-message-column relative mx-auto flex w-full max-w-5xl flex-1 flex-col px-3 sm:px-6"
+            className="chat-message-column relative mx-auto flex w-full max-w-none flex-1 flex-col px-3 sm:px-6 lg:px-8 xl:px-10"
           >
             {(messages ?? []).length === 0 && !pending ? (
               <div className="chat-welcome animate-pop-in">
@@ -1258,10 +1258,10 @@ function ChatView({
                       ) : null}
                       <MessageContent
                         className={cn(
-                          "chat-message-content min-w-0 max-w-[min(46rem,82%)] px-4 py-3 text-sm leading-7",
+                          "chat-message-content min-w-0 px-4 py-3 text-sm leading-7",
                           isUser
-                            ? "bubble-user rounded-xl rounded-ss-sm text-primary-foreground whitespace-pre-wrap shadow-card"
-                            : "order-1 bg-transparent",
+                            ? "max-w-[min(46rem,78%)] bubble-user rounded-xl rounded-ss-sm text-primary-foreground whitespace-pre-wrap shadow-card"
+                            : "order-1 w-full max-w-[min(76rem,calc(100%-3rem))] bg-transparent",
                         )}
                       >
                         {isUser ? (
@@ -1502,7 +1502,7 @@ function ChatView({
           <div className="chat-composer-dock pointer-events-none p-3 sm:p-5">
             <PromptInput
               onSubmit={(message) => submit(message.text || draft)}
-              className="chat-composer pointer-events-auto mx-auto max-w-5xl rounded-2xl border border-border/70 p-2 transition-all focus-within:border-primary/55 focus-within:ring-4 focus-within:ring-primary/10"
+              className="chat-composer pointer-events-auto mx-auto w-full max-w-none rounded-2xl border border-border/70 p-2 transition-all focus-within:border-primary/55 focus-within:ring-4 focus-within:ring-primary/10"
             >
               <PromptInputTextarea
                 ref={inputRef}
