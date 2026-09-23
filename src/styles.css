@@ -46370,17 +46370,18 @@ html {
 
 @media (min-width: 768px) {
   .sahl-beyond {
-    --sahl-parade-bg: oklch(0.97 0.012 85);
+    --sahl-parade-bg: oklch(0.94 0.025 83);
     --sahl-parade-ink: oklch(0.27 0.018 45);
     --sahl-parade-brand: oklch(0.58 0.16 38);
     --sahl-parade-accent: oklch(0.52 0.09 175);
     display: grid;
     min-height: min(54rem, 100svh);
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-content: end;
     overflow: hidden;
     background: var(--sahl-parade-bg);
     color: var(--sahl-parade-ink);
-    padding-block: clamp(3.5rem, 8vh, 6.5rem) clamp(2.5rem, 6vh, 5rem);
+    padding-block: clamp(4rem, 11vh, 8rem) clamp(2rem, 4vh, 3.5rem);
   }
 
   .sahl-beyond-copy {
@@ -46421,10 +46422,9 @@ html {
   }
 
   .sahl-parade {
-    align-self: end;
     display: grid;
     gap: clamp(0.85rem, 1.8vh, 1.35rem);
-    margin-top: clamp(2rem, 5vh, 4.25rem);
+    margin-top: clamp(2rem, 3.5vh, 3rem);
     direction: ltr;
   }
 
@@ -46488,7 +46488,7 @@ html {
 @media (min-width: 768px) and (max-width: 1199px) {
   .sahl-beyond {
     min-height: 100svh;
-    padding-block: 2.25rem 2rem;
+    padding-block: clamp(4rem, 10vh, 7rem) 1.75rem;
   }
 
   .sahl-beyond-copy h1 {
