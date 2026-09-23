@@ -1,34 +1,70 @@
-import arabPeopleParade from "@/assets/hero/arab-people-parade-neck.png";
+const portraitModules = import.meta.glob("/src/assets/hero/portraits-display/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
 
-const people = Array.from({ length: 44 }, (_, index) => index);
-const pairedPeople = Array.from({ length: 22 }, (_, index) => [index, index + 22]).flat();
-const upperRow = pairedPeople.slice(0, 22);
-const lowerRow = pairedPeople.slice(22);
+const countries = [
+  "saudi",
+  "uae",
+  "kuwait",
+  "qatar",
+  "bahrain",
+  "oman",
+  "yemen",
+  "iraq",
+  "jordan",
+  "lebanon",
+  "syria",
+  "morocco",
+  "algeria",
+  "tunisia",
+  "libya",
+  "mauritania",
+  "egypt",
+  "sudan",
+  "somalia",
+  "djibouti",
+  "comoros",
+  "palestine",
+] as const;
 
-function PersonPortrait({ index }: { index: number }) {
-  const position = `${(index / (people.length - 1)) * 100}% 100%`;
+const portraits = countries.flatMap((country) =>
+  (["man", "woman"] as const).map((gender) => ({
+    src: portraitModules[`/src/assets/hero/portraits-display/${country}-${gender}.webp`],
+    key: `${country}-${gender}`,
+  })),
+);
+
+const upperRow = portraits.slice(0, 22);
+const lowerRow = portraits.slice(22);
+
+function PersonPortrait({ portrait }: { portrait: (typeof portraits)[number] }) {
+  if (!portrait.src) return null;
 
   return (
     <span className="sahl-parade-card" aria-hidden="true">
-      <span
+      <img
         className="sahl-parade-portrait"
-        style={{
-          backgroundImage: `url(${arabPeopleParade})`,
-          backgroundPosition: position,
-        }}
+        src={portrait.src}
+        alt=""
+        width={1024}
+        height={1280}
+        loading="eager"
+        decoding="async"
       />
     </span>
   );
 }
 
-function ParadeRow({ indices, reverse = false }: { indices: number[]; reverse?: boolean }) {
+function ParadeRow({ row, reverse = false }: { row: typeof portraits; reverse?: boolean }) {
   return (
     <div className="sahl-parade-window" aria-hidden="true">
       <div className={`sahl-parade-track${reverse ? " is-reverse" : ""}`}>
         {[0, 1].map((copy) => (
           <div className="sahl-parade-set" key={copy}>
-            {indices.map((index) => (
-              <PersonPortrait index={index} key={`${copy}-${index}`} />
+            {row.map((portrait) => (
+              <PersonPortrait portrait={portrait} key={`${copy}-${portrait.key}`} />
             ))}
           </div>
         ))}
@@ -49,8 +85,8 @@ export function PricingBeyondHero() {
       </header>
 
       <div className="sahl-parade" aria-hidden="true">
-        <ParadeRow indices={upperRow} />
-        <ParadeRow indices={lowerRow} reverse />
+        <ParadeRow row={upperRow} />
+        <ParadeRow row={lowerRow} reverse />
       </div>
     </section>
   );
