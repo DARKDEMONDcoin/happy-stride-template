@@ -44192,19 +44192,31 @@ html {
 
 @keyframes sahl-pricing-dot-wave-primary {
   from {
-    transform: translate3d(34%, -18%, 0);
+    background-position:
+      0 0,
+      12px 12px,
+      24px 24px;
   }
   to {
-    transform: translate3d(-34%, 18%, 0);
+    background-position:
+      -36px 36px,
+      -24px 48px,
+      -12px 60px;
   }
 }
 
 @keyframes sahl-pricing-dot-wave-secondary {
   from {
-    transform: translate3d(-24%, -12%, 0);
+    background-position:
+      0 0,
+      12px 12px,
+      24px 24px;
   }
   to {
-    transform: translate3d(24%, 12%, 0);
+    background-position:
+      -36px 36px,
+      -24px 48px,
+      -12px 60px;
   }
 }
 
@@ -44249,7 +44261,7 @@ html {
     position: absolute;
     inset: -24% -38%;
     pointer-events: none;
-    will-change: transform;
+    will-change: background-position;
   }
 
   .sahl-upgrade-dots::before {
@@ -44275,7 +44287,7 @@ html {
       24px 24px;
     background-size: 36px 36px;
     mask-image: linear-gradient(125deg, transparent 40%, black 46%, black 54%, transparent 60%);
-    animation: sahl-pricing-dot-wave-primary 1.65s linear infinite;
+    animation: sahl-pricing-dot-wave-primary 2.4s linear infinite;
   }
 
   .sahl-upgrade-dots::after {
@@ -44303,7 +44315,7 @@ html {
     background-size: 36px 36px;
     mask-image: linear-gradient(55deg, transparent 43%, black 48%, black 52%, transparent 57%);
     opacity: 0.55;
-    animation: sahl-pricing-dot-wave-secondary 2.15s linear infinite;
+    animation: sahl-pricing-dot-wave-secondary 2.4s linear infinite;
   }
 }
 
