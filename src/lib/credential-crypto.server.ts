@@ -56,23 +56,36 @@ export async function sealConfig(config: Record<string, unknown>): Promise<Recor
   return { __enc: `${PREFIX}${b64(iv)}.${b64(cipher)}` };
 }
 
-/** يفكّ التشفير؛ الصفوف القديمة (بلا __enc) تُعاد كما هي. */
+/**
+ * يفكّ التشفير؛ الصفوف القديمة (بلا __enc) تُعاد كما هي.
+ * إن غاب المفتاح أو تغيّر (صفّ مشفّر بمفتاح قديم) نعيد null بدل رفع خطأ،
+ * حتى تظهر الواجهة «غير مربوط» ويعيد المالك الربط بدل شاشة بيضاء.
+ */
 export async function openConfig<T>(stored: unknown): Promise<T | null> {
   if (!stored || typeof stored !== "object") return null;
   const blob = (stored as { __enc?: unknown }).__enc;
   if (typeof blob !== "string") return stored as T;
   if (!blob.startsWith(PREFIX)) return null;
   const key = await keyMaterial();
-  if (!key) throw new Error("تعذّر قراءة بيانات الربط: مفتاح التشفير غير متاح على الخادم.");
+  if (!key) {
+    console.error("[credentials] CREDENTIALS_ENC_KEY غير متاح — تعذّر فكّ بيانات الربط.");
+    return null;
+  }
   const [ivPart, cipherPart] = blob.slice(PREFIX.length).split(".");
   if (!ivPart || !cipherPart) return null;
-  const plain = await crypto.subtle.decrypt(
-    { name: "AES-GCM", iv: unb64(ivPart) },
-    key,
-    unb64(cipherPart),
-  );
-  return JSON.parse(new TextDecoder().decode(plain)) as T;
+  try {
+    const plain = await crypto.subtle.decrypt(
+      { name: "AES-GCM", iv: unb64(ivPart) },
+      key,
+      unb64(cipherPart),
+    );
+    return JSON.parse(new TextDecoder().decode(plain)) as T;
+  } catch {
+    console.error("[credentials] فشل فكّ التشفير — بيانات الربط محفوظة بمفتاح مختلف.");
+    return null;
+  }
 }
+
 
 /** هل الصف مخزّن مشفّراً؟ (يُستخدم للترحيل التدريجي) */
 export function isSealed(stored: unknown): boolean {
