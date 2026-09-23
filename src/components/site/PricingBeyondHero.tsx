@@ -1,22 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
-import menEast from "@/assets/hero/arab-men-east-strip.png";
-import menWest from "@/assets/hero/arab-men-west-strip.png";
-import womenEast from "@/assets/hero/arab-women-east-strip.png";
-import womenWest from "@/assets/hero/arab-women-west-strip.png";
+import arabPeopleParade from "@/assets/hero/arab-people-parade-neck.png";
 
 /**
  * مقدمة سينمائية لصفحة الأسعار — تظهر فقط على الكمبيوتر والشاشات الكبيرة.
  * الطبقات والحركة مبنية على هوية سهل (قرميدي/ذهبي/تيل) بدون أي ألوان خارجية.
  */
 
-const leftWords = ["شرارة", "تخيّل", "تطوّر", "إنجاز"];
-const rightWords = ["انطلق", "بداية", "هدف", "اشتعال"];
+const heroWords = ["شرارة", "تخيّل", "انطلق", "تطوّر", "بداية", "إنجاز", "هدف", "اشتعال"];
 
 const marqueeText =
   "شرارة · تخيّل · انطلق · تطوّر · بداية · إنجاز · هدف · سهل · ";
-
-const arabPeople = [menEast, womenWest, menWest, womenEast];
 
 const layers = [
   { color: "var(--sahl-hero-teal)", offset: 36 },
@@ -51,8 +45,7 @@ export function PricingBeyondHero() {
     };
   }, []);
 
-  const wordOpacity = 0.35 + progress * 0.65;
-  const shift = (i: number) => (60 + i * 40) * (1 - progress);
+  const wordOpacity = 0.55 + progress * 0.45;
 
   return (
     <div className="sahl-beyond" aria-hidden="true">
@@ -76,42 +69,25 @@ export function PricingBeyondHero() {
             </div>
           </div>
 
-          <div className="sahl-beyond-words">
-            <div className="sahl-beyond-col">
-              {leftWords.map((word, i) => (
-                <span
-                  key={word}
-                  className="sahl-beyond-word"
-                  style={{ opacity: wordOpacity, transform: `translateX(${-shift(i)}px)` }}
-                >
-                  {word}
-                </span>
-              ))}
-            </div>
-            <div className="sahl-beyond-col sahl-beyond-col-end">
-              {rightWords.map((word, i) => (
-                <span
-                  key={word}
-                  className="sahl-beyond-word"
-                  style={{ opacity: wordOpacity, transform: `translateX(${shift(i)}px)` }}
-                >
-                  {word}
-                </span>
-              ))}
-            </div>
+          <div className="sahl-beyond-words" style={{ opacity: wordOpacity }}>
+            {heroWords.map((word) => (
+              <span key={word} className="sahl-beyond-word">
+                {word}
+              </span>
+            ))}
           </div>
 
           <div className="sahl-beyond-people" aria-hidden="true">
             <div className="sahl-beyond-people-track">
               {[0, 1].map((copy) => (
                 <div className="sahl-beyond-people-set" key={copy}>
-                  {arabPeople.map((src, index) => (
+                  {[arabPeopleParade].map((src, index) => (
                     <img
                       key={`${copy}-${src}`}
                       src={src}
                       alt=""
-                      width={1920}
-                      height={342}
+                      width={7392}
+                      height={430}
                       loading={copy === 0 && index === 0 ? "eager" : "lazy"}
                     />
                   ))}
