@@ -1,19 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  BadgeCheck,
-  BarChart3,
   Check,
-  Image,
-  Inbox,
-  Link2,
   Minus,
   ShieldCheck,
-  Sparkles,
-  Users,
-  Workflow,
   X,
-  Zap,
 } from "lucide-react";
 
 import { PageShell, CtaBand } from "@/components/site/PageShell";
@@ -48,8 +39,6 @@ export const Route = createFileRoute("/pricing")({
 });
 
 // الباقات مصدرها ملف واحد مشترك مع قسم الأسعار في الصفحة الرئيسية.
-
-const perkIcons = [Sparkles, Users, Zap, Image, Workflow, Inbox, Link2, BarChart3, BadgeCheck];
 
 const matrix: { f: string; v: (boolean | string)[] }[] = [
   { f: "عدد الموظفين الرقميين", v: ["1", "6", "6+"] },
@@ -118,11 +107,12 @@ function PricingPage() {
             <div className="sahl-upgrade-perks">
               <ul>
                 {selected.perks.map((perk, index) => {
-                  const Icon = perkIcons[index % perkIcons.length] ?? Sparkles;
                   const tone = index % 3 === 0 ? "primary" : index % 3 === 1 ? "gold" : "jade";
                   return (
                     <li key={perk}>
-                      <Icon data-tone={tone} strokeWidth={1.8} />
+                      <span className="sahl-upgrade-perk-check" data-tone={tone} aria-hidden="true">
+                        <Check strokeWidth={2.4} />
+                      </span>
                       <span>{perk}</span>
                     </li>
                   );
@@ -228,12 +218,11 @@ function PricingPage() {
 
                   <ul className="pricing-desktop-perks">
                     {p.perks.map((perk, index) => {
-                      const Icon = perkIcons[index % perkIcons.length] ?? Check;
                       const tone = index % 3 === 0 ? "teal" : index % 3 === 1 ? "gold" : "brick";
                       return (
                         <li key={perk}>
                           <span className="pricing-desktop-perk-icon" data-tone={tone}>
-                            <Icon strokeWidth={2.15} />
+                            <Check strokeWidth={2.4} />
                           </span>
                           <span>{perk}</span>
                         </li>
