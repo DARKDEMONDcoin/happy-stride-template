@@ -1,8 +1,9 @@
 import arabPeopleParade from "@/assets/hero/arab-people-parade-neck.png";
 
 const people = Array.from({ length: 44 }, (_, index) => index);
-const upperRow = people.filter((index) => index % 2 === 0);
-const lowerRow = people.filter((index) => index % 2 === 1);
+const pairedPeople = Array.from({ length: 22 }, (_, index) => [index, index + 22]).flat();
+const upperRow = pairedPeople.slice(0, 22);
+const lowerRow = pairedPeople.slice(22);
 
 function PersonPortrait({ index }: { index: number }) {
   const position = `${(index / (people.length - 1)) * 100}% 100%`;
