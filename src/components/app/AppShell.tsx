@@ -87,16 +87,6 @@ function SidebarBody({ onNavigate }: { onNavigate?: () => void }) {
           ))}
         </div>
       </div>
-      <Link
-        to="/app/learning"
-        onClick={onNavigate}
-        className={cn(
-          "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-bold hover:bg-secondary",
-          pathname === "/app/learning" && "bg-primary/10 text-primary",
-        )}
-      >
-        <TrendingUp className="size-4" /> تطور الفريق
-      </Link>
       <Link to="/pricing" onClick={onNavigate} className="app-sidebar-pricing">
         <span>
           <small>الخطط والسعة</small>
