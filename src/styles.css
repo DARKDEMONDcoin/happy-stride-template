@@ -172,7 +172,7 @@
 }
 
 /* بطاقات باقات الأسعار — سطح المكتب فقط. نسخة الهاتف مستقلة ولا تتأثر. */
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .pricing-desktop-grid {
     --pricing-card-radius: 1.45rem;
     --pricing-card-border: color-mix(in oklab, var(--foreground) 11%, transparent);
@@ -384,7 +384,7 @@
   }
 }
 
-@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+@media (min-width: 768px) and (prefers-reduced-motion: reduce) {
   .pricing-desktop-card,
   .pricing-desktop-card:hover,
   .pricing-desktop-card.is-featured,

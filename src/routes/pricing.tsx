@@ -71,7 +71,7 @@ function PricingPage() {
   if (!selected) return null;
   return (
     <PageShell className="sahl-pricing-shell bg-background" hideFooterOnMobile>
-      <section className="sahl-upgrade lg:hidden" aria-labelledby="mobile-pricing-title">
+      <section className="sahl-upgrade md:hidden" aria-labelledby="mobile-pricing-title">
         <div className="sahl-upgrade-dots" aria-hidden="true" />
         <div className="sahl-upgrade-inner">
           <div className="sahl-upgrade-topbar">
@@ -195,7 +195,7 @@ function PricingPage() {
         </div>
       </section>
 
-      <div className="hidden lg:block">
+      <div className="hidden md:block">
         <PricingBeyondHero />
 
 
@@ -204,7 +204,7 @@ function PricingPage() {
             <span>العملة حسب بلدك:</span>
             <RegionPicker />
           </div>
-          <div className="pricing-desktop-grid grid gap-6 lg:grid-cols-3">
+          <div className="pricing-desktop-grid grid grid-cols-3 gap-6">
             {plans.map((p, i) => (
               <Reveal key={p.id} delay={i * 70} className="pricing-desktop-reveal">
                 <div
