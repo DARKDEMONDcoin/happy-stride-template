@@ -1356,7 +1356,7 @@ export function EditorialHomepage() {
                     ))}
                   </ul>
                   <Button asChild variant="outline" className="sahl-home-plan-cta">
-                    {plan.monthly ? (
+                    {plan.id !== "scale" ? (
                       <Link to="/auth" search={{ mode: "signup" as const, plan: plan.id }}>
                         {plan.cta}
                         <ArrowLeft />
