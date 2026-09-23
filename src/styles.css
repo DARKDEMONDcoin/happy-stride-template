@@ -46132,240 +46132,148 @@ html {
   }
 }
 
-/* ===== مقدمة صفحة الأسعار السينمائية (وضع الكمبيوتر فقط — تظهر على الهاتف عند تفعيل "وضع سطح المكتب") ===== */
+/* ===== غلاف أسعار الكمبيوتر: عنوان واضح وموكب موظفين معزول بلا تداخل ===== */
 .sahl-beyond {
   display: none;
 }
 
 @media (min-width: 768px) {
   .sahl-beyond {
-    display: block;
-    --sahl-hero-bg: var(--gold-deep);
-    --sahl-hero-front: oklch(1 0 0);
-    --sahl-hero-gold: var(--gold);
-    --sahl-hero-teal: var(--jade);
-  }
-
-  .sahl-beyond-stage {
-    position: relative;
-    width: 100%;
-    height: 120vh;
+    --sahl-parade-bg: oklch(0.97 0.012 85);
+    --sahl-parade-ink: oklch(0.27 0.018 45);
+    --sahl-parade-brand: oklch(0.58 0.16 38);
+    --sahl-parade-accent: oklch(0.52 0.09 175);
+    display: grid;
+    min-height: min(54rem, 100svh);
+    grid-template-rows: auto minmax(0, 1fr);
     overflow: hidden;
-    background: var(--sahl-hero-bg);
+    background: var(--sahl-parade-bg);
+    color: var(--sahl-parade-ink);
+    padding-block: clamp(3.5rem, 8vh, 6.5rem) clamp(2.5rem, 6vh, 5rem);
   }
 
-  .sahl-beyond-stage::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0;
-    height: 42vh;
-    background: linear-gradient(
-      to top,
-      color-mix(in oklab, var(--sahl-hero-bg) 92%, var(--sahl-hero-gold) 8%) 0%,
-      color-mix(in oklab, var(--sahl-hero-bg) 82%, var(--sahl-hero-teal) 18%) 34%,
-      transparent 100%
-    );
-    opacity: 0.26;
-    pointer-events: none;
-  }
-
-  .sahl-beyond-sticky {
-    position: sticky;
-    top: 0;
-    z-index: 11;
-    height: 100vh;
-    width: 100%;
-  }
-
-  .sahl-beyond-title-wrap {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: clamp(2.5rem, 7vh, 5.5rem);
+  .sahl-beyond-copy {
+    position: relative;
     z-index: 2;
+    width: min(90vw, 78rem);
+    margin-inline: auto;
+    text-align: center;
   }
 
-  .sahl-beyond-title-stack {
-    position: relative;
-  }
-
-  .sahl-beyond-title {
-    display: block;
-    inset: 0;
-    font-family: "Almarai", var(--font-display);
-    font-weight: 800;
-    font-size: clamp(7rem, 20vw, 20rem);
-    line-height: 0.85;
-    letter-spacing: 0.02em;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  .sahl-beyond-words {
-    position: absolute;
-    left: 50%;
-    bottom: clamp(1.35rem, 4vh, 3.35rem);
-    z-index: 14;
+  .sahl-beyond-copy h1 {
     display: flex;
-    width: min(88vw, 82rem);
-    transform: translateX(-50%);
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
-    gap: clamp(0.65rem, 1.5vw, 1.4rem);
-    padding: clamp(0.75rem, 1vw, 1rem) clamp(1.15rem, 2vw, 2.5rem);
-    border: 1px solid oklch(1 0 0 / 0.24);
-    border-radius: 999px;
-    background: color-mix(in oklab, var(--sahl-hero-bg) 62%, transparent);
-    box-shadow: 0 18px 48px oklch(0.16 0.004 60 / 0.18), inset 0 1px 0 oklch(1 0 0 / 0.14);
-    backdrop-filter: blur(12px);
-    pointer-events: none;
-    transition: opacity 0.05s linear;
+    gap: clamp(0.8rem, 1.7vw, 1.5rem);
+    color: var(--sahl-parade-brand);
+    font-family: "Almarai", var(--font-display);
+    font-size: clamp(5rem, 11vw, 10rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: 0;
   }
 
-  .sahl-beyond-word {
-    font-family: "Almarai", var(--font-sans);
+  .sahl-beyond-copy h1 span {
+    color: var(--sahl-parade-ink);
+    font-size: 0.3em;
     font-weight: 700;
-    font-size: clamp(1.15rem, 1.65vw, 2rem);
-    line-height: 1;
-    color: oklch(1 0 0 / 0.9);
-    text-shadow: 0 3px 18px oklch(0.16 0.004 60 / 0.32);
-    white-space: nowrap;
-    user-select: none;
   }
 
-  .sahl-beyond-word::after {
-    content: "·";
-    margin-inline-start: clamp(0.65rem, 1vw, 1rem);
-    color: var(--sahl-hero-gold);
+  .sahl-beyond-copy p {
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+    color: var(--sahl-parade-ink);
+    font-family: "IBM Plex Sans Arabic", var(--font-sans);
+    font-size: clamp(1.25rem, 2.2vw, 2rem);
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0;
   }
 
-  .sahl-beyond-word:last-child::after {
-    content: "";
-    margin: 0;
-  }
-
-  .sahl-beyond-people {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: clamp(6.15rem, 14vh, 10rem);
-    z-index: 10;
-    width: 100%;
-    height: clamp(19rem, 45vh, 30rem);
-    overflow: hidden;
-    pointer-events: none;
+  .sahl-parade {
+    align-self: end;
+    display: grid;
+    gap: clamp(0.85rem, 1.8vh, 1.35rem);
+    margin-top: clamp(2rem, 5vh, 4.25rem);
     direction: ltr;
   }
 
-  .sahl-beyond-people-track {
+  .sahl-parade-window {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-block: 0.25rem;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+
+  .sahl-parade-track {
     display: flex;
     width: max-content;
-    height: 100%;
     will-change: transform;
-    animation: sahl-people-scroll 72s linear infinite;
+    animation: sahl-parade-forward 30s linear infinite;
   }
 
-  .sahl-beyond-people-set {
+  .sahl-parade-track.is-reverse {
+    animation-name: sahl-parade-reverse;
+    animation-duration: 25s;
+  }
+
+  .sahl-parade-set {
     display: flex;
     flex: none;
-    height: 100%;
+    gap: clamp(0.65rem, 1vw, 1rem);
+    padding-inline-end: clamp(0.65rem, 1vw, 1rem);
   }
 
-  .sahl-beyond-people-set img {
+  .sahl-parade-card {
+    position: relative;
     display: block;
     flex: none;
-    width: auto;
-    height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
-    filter: drop-shadow(0 24px 38px oklch(0.16 0.004 60 / 0.22));
-  }
-
-  .sahl-beyond-marquee {
-    width: 100%;
-    background: oklch(1 0 0);
+    width: clamp(6.25rem, 8vw, 8rem);
+    aspect-ratio: 0.78;
     overflow: hidden;
-    padding: 2rem 0;
-    border-block: 1px solid var(--border);
+    border: 1px solid color-mix(in oklab, var(--sahl-parade-ink) 12%, transparent);
+    border-radius: 0.5rem;
+    background: color-mix(in oklab, var(--sahl-parade-bg) 84%, var(--sahl-parade-accent) 16%);
+    box-shadow: 0 0.8rem 2rem color-mix(in oklab, var(--sahl-parade-ink) 10%, transparent);
   }
 
-  .sahl-beyond-marquee-track {
-    display: flex;
-    white-space: nowrap;
-    animation: sahl-beyond-scroll 18s linear infinite;
-  }
-
-  .sahl-beyond-marquee-copy {
-    flex-shrink: 0;
-    font-family: "Almarai", var(--font-display);
-    font-weight: 800;
-    color: var(--gold-deep);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 1;
-    padding-inline-end: 0.25em;
-    user-select: none;
+  .sahl-parade-portrait {
+    position: absolute;
+    inset: -6% -6% 0;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 4928% 112%;
   }
 }
 
-/* شاشات متوسطة (تابلت / هاتف في وضع سطح المكتب) — مقاسات مضبوطة حتى لا يحدث قصّ */
 @media (min-width: 768px) and (max-width: 1199px) {
-  .sahl-beyond-title-wrap {
-    padding-top: clamp(2rem, 5vh, 3.5rem);
+  .sahl-beyond {
+    min-height: 100svh;
+    padding-block: 2.25rem 2rem;
   }
 
-  .sahl-beyond-title {
-    font-size: clamp(7rem, 18vw, 11rem);
+  .sahl-beyond-copy h1 {
+    font-size: clamp(4.5rem, 12vw, 7rem);
   }
 
-  .sahl-beyond-words {
-    bottom: clamp(1rem, 3.2vh, 1.85rem);
-    width: min(91vw, 56rem);
-    gap: clamp(0.35rem, 0.8vw, 0.75rem);
-    padding: 0.65rem 1rem;
-  }
-
-  .sahl-beyond-word {
-    font-size: clamp(0.85rem, 1.65vw, 1.15rem);
-    text-shadow: 0 2px 14px oklch(0.16 0.004 60 / 0.18);
-  }
-
-  .sahl-beyond-word::after {
-    margin-inline-start: clamp(0.35rem, 0.7vw, 0.65rem);
-  }
-
-  .sahl-beyond-people {
-    bottom: clamp(5.25rem, 11.5vh, 7rem);
-    height: clamp(18rem, 43vh, 24rem);
-  }
-
-  .sahl-beyond-marquee {
-    padding: 1.25rem 0;
+  .sahl-parade-card {
+    width: clamp(5.5rem, 10vw, 6.75rem);
   }
 }
 
-@keyframes sahl-beyond-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+@keyframes sahl-parade-forward {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
-@keyframes sahl-people-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+@keyframes sahl-parade-reverse {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sahl-beyond-marquee-track,
-  .sahl-beyond-people-track {
-    animation: none;
+  .sahl-parade-track,
+  .sahl-parade-track.is-reverse {
+    animation-play-state: paused;
   }
 }
