@@ -25,6 +25,9 @@ import { useRegion } from "@/hooks/use-region";
 import { RegionPicker } from "@/components/site/Portrait";
 import { Button } from "@/components/ui/button";
 import { LogoMark } from "@/components/site/LogoMark";
+import salimPortrait from "@/assets/hero/salim-user.png";
+import amalPortrait from "@/assets/hero/amal-user.png";
+import nourPortrait from "@/assets/hero/nour-user.png";
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
@@ -71,22 +74,35 @@ function PricingPage() {
   if (!selected) return null;
   return (
     <PageShell className="sahl-pricing-shell bg-background" hideFooterOnMobile>
-      <section className="sahl-upgrade md:hidden" aria-labelledby="mobile-pricing-title">
-        <div className="sahl-upgrade-dots" aria-hidden="true" />
-        <div className="sahl-upgrade-inner">
-          <div className="sahl-upgrade-topbar">
-            <span className="sahl-upgrade-brand" aria-hidden="true">
-              <LogoMark size={18} />
-            </span>
-            <Button asChild variant="ghost" size="icon" className="sahl-upgrade-close">
-              <Link to="/" aria-label="إغلاق صفحة الأسعار">
-                <X strokeWidth={1.8} />
-              </Link>
-            </Button>
-          </div>
+      <section className="sahl-mobile-pricing-hero md:hidden" aria-labelledby="mobile-pricing-hero-title">
+        <div className="sahl-mobile-pricing-topbar">
+          <span className="sahl-mobile-pricing-mark" aria-hidden="true">
+            <LogoMark size={22} />
+          </span>
+          <Button asChild variant="ghost" size="icon" className="sahl-mobile-pricing-close">
+            <Link to="/" aria-label="إغلاق صفحة الأسعار">
+              <X strokeWidth={1.8} />
+            </Link>
+          </Button>
+        </div>
 
+        <h1 id="mobile-pricing-hero-title">
+          <span>منصة سهل.</span>
+          <strong>إمكانيات موظفين ذكاء اصطناعي لا حصر لها.</strong>
+        </h1>
+
+        <div className="sahl-mobile-pricing-portraits" aria-hidden="true">
+          <figure><img src={salimPortrait} alt="" /></figure>
+          <figure className="is-primary"><img src={amalPortrait} alt="" /></figure>
+          <figure><img src={nourPortrait} alt="" /></figure>
+        </div>
+
+        <div className="sahl-mobile-pricing-rule" aria-hidden="true"><i /><i /><i /></div>
+      </section>
+
+      <section className="sahl-upgrade md:hidden" aria-labelledby="mobile-pricing-title">
+        <div className="sahl-upgrade-inner">
           <header className="sahl-upgrade-heading">
-            <p>فريقك الرقمي يبدأ من هنا</p>
             <h1 id="mobile-pricing-title">اختر باقتك</h1>
           </header>
 
