@@ -71,7 +71,7 @@ function PricingPage() {
   if (!selected) return null;
   return (
     <PageShell className="sahl-pricing-shell bg-background" hideFooterOnMobile>
-      <section className="sahl-upgrade md:hidden" aria-labelledby="mobile-pricing-title">
+      <section className="sahl-upgrade lg:hidden" aria-labelledby="mobile-pricing-title">
         <div className="sahl-upgrade-dots" aria-hidden="true" />
         <div className="sahl-upgrade-inner">
           <div className="sahl-upgrade-topbar">
@@ -195,7 +195,7 @@ function PricingPage() {
         </div>
       </section>
 
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <PricingBeyondHero />
 
 
